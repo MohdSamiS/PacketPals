@@ -2,6 +2,7 @@ export enum Category {
   NETWORKING = 'Networking',
   CLOUD = 'Cloud Computing',
   CYBERSECURITY = 'Cybersecurity',
+  IOT = 'IoT & Electronics',
 }
 
 export interface Packet {
@@ -15,6 +16,7 @@ export interface Packet {
   date: string;
   readTime: string;
   tags: string[];
+  image?: string; // URL to cover image
 }
 
 export interface Transmission {

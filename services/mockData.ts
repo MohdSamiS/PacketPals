@@ -8,9 +8,9 @@ export const PACKETS: Packet[] = [
     excerpt: 'A deep dive into the encapsulation process and how data traverses the seven layers of the OSI model versus the four layers of TCP/IP.',
     content: `
       <p class="mb-4">The Transmission Control Protocol/Internet Protocol (TCP/IP) suite is the engine for the Internet and networks worldwide. Its simplicity and robustness have made it the standard for communication.</p>
-      <h3 class="text-xl font-bold text-white mt-6 mb-3">The Four Layers</h3>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">The Four Layers</h3>
       <p class="mb-4">Unlike the OSI model's seven layers, TCP/IP condenses functions into four abstraction layers:</p>
-      <ul class="list-disc pl-5 space-y-2 mb-6 text-brand-muted">
+      <ul class="list-disc pl-5 space-y-2 mb-6 text-slate-600 dark:text-brand-muted">
         <li><strong class="text-brand-net">Application Layer:</strong> Represents data to the user plus encoding and dialog control.</li>
         <li><strong class="text-brand-net">Transport Layer:</strong> Supports communication between diverse devices across diverse networks.</li>
         <li><strong class="text-brand-net">Internet Layer:</strong> Determines the best path through the network.</li>
@@ -30,7 +30,8 @@ export const PACKETS: Packet[] = [
     author: 'Alex Chen',
     date: '2023-10-15',
     readTime: '8 min',
-    tags: ['TCP/IP', 'OSI', 'Fundamentals']
+    tags: ['TCP/IP', 'OSI', 'Fundamentals'],
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bbcbf?q=80&w=2071&auto=format&fit=crop'
   },
   {
     id: 'p-14',
@@ -39,9 +40,9 @@ export const PACKETS: Packet[] = [
     excerpt: 'Why "never trust, always verify" is becoming the gold standard in enterprise architecture.',
     content: `
       <p class="mb-4">Traditional perimeter-based security models are obsolete. Zero Trust assumes that a breach is inevitable or has likely already occurred.</p>
-      <h3 class="text-xl font-bold text-white mt-6 mb-3">Core Principles</h3>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Core Principles</h3>
       <p class="mb-4">Zero Trust is built upon three pillars:</p>
-      <ol class="list-decimal pl-5 space-y-2 mb-6 text-brand-muted">
+      <ol class="list-decimal pl-5 space-y-2 mb-6 text-slate-600 dark:text-brand-muted">
         <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points.</li>
         <li><strong>Use Least Privilege Access:</strong> Limit user access with Just-In-Time and Just-Enough-Access (JIT/JEA).</li>
         <li><strong>Assume Breach:</strong> Minimize blast radius and segment access. Verify end-to-end encryption.</li>
@@ -51,19 +52,227 @@ export const PACKETS: Packet[] = [
     author: 'Sarah Jenkins',
     date: '2023-11-02',
     readTime: '12 min',
-    tags: ['Security', 'Zero Trust', 'Enterprise']
+    tags: ['Security', 'Zero Trust', 'Enterprise'],
+    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-iot-01',
+    number: '101',
+    title: 'ESP32 vs Arduino: Choosing Your Microcontroller',
+    excerpt: 'A comprehensive comparison of the classic Arduino Uno and the feature-rich ESP32 for your next IoT project.',
+    content: `
+      <p class="mb-4">When starting an electronics project, the first question is often: "Which board should I use?" The Arduino ecosystem has dominated for years, but Espressif's ESP32 has emerged as a powerhouse for connected applications.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Arduino Uno (ATmega328P)</h3>
+      <p class="mb-4">The classic choice. It's robust, 5V tolerant, and has massive community support. However, it lacks native connectivity (WiFi/Bluetooth) and runs at a slower 16MHz.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">ESP32</h3>
+      <p class="mb-4">The modern contender. It features dual cores, runs at up to 240MHz, and most importantly, includes built-in WiFi and Bluetooth. It operates at 3.3V logic, which requires care when interfacing with older sensors.</p>
+
+      <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg border-l-4 border-brand-accent my-6">
+        <p class="italic text-slate-700 dark:text-slate-300">"If your project needs to talk to the internet, go with the ESP32. If you are blinking LEDs or learning basic digital logic, the Arduino Uno is still a great teacher."</p>
+      </div>
+    `,
+    category: Category.IOT,
+    author: 'Mohammed Sami',
+    date: '2024-04-05',
+    readTime: '10 min',
+    tags: ['ESP32', 'Arduino', 'Hardware', 'Microcontrollers'],
+    image: 'https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-iot-02',
+    number: '102',
+    title: 'MQTT: The Language of IoT',
+    excerpt: 'Understanding the lightweight Publish/Subscribe protocol that powers home automation and industrial sensors.',
+    content: `
+      <p class="mb-4">HTTP is heavy. When you have a temperature sensor running on a battery, you can't afford the overhead of a full REST API call with headers and handshakes. Enter MQTT (Message Queuing Telemetry Transport).</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Publish / Subscribe Model</h3>
+      <p class="mb-4">Unlike the client-server model of the web, MQTT uses a Broker. Devices "publish" messages to a "topic" (e.g., <code>home/livingroom/temp</code>), and other devices "subscribe" to that topic to receive updates.</p>
+      
+      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
+        <span class="text-brand-muted">// Arduino / C++ MQTT Example</span><br/>
+        client.publish(<span class="text-green-400">"sensors/humidity"</span>, <span class="text-blue-400">"45.2"</span>);<br/><br/>
+        <span class="text-brand-muted">// Subscribing device receives this instantly</span>
+      </div>
+    `,
+    category: Category.IOT,
+    author: 'Alex Chen',
+    date: '2024-04-12',
+    readTime: '8 min',
+    tags: ['MQTT', 'IoT', 'Protocols', 'Automation'],
+    image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop'
   },
   {
     id: 'p-22',
     number: '22',
     title: 'Kubernetes Networking: CNI Plugins',
     excerpt: 'Demystifying how pods communicate across nodes using Calico, Flannel, and Cilium.',
-    content: '<p>Kubernetes networking is often considered the hardest part of the ecosystem...</p>',
+    content: '<p>Kubernetes networking is often considered the hardest part of the ecosystem. Understanding the Container Network Interface (CNI) is crucial for any Cloud Engineer.</p>',
     category: Category.CLOUD,
     author: 'David Ross',
     date: '2023-12-10',
     readTime: '15 min',
-    tags: ['K8s', 'Cloud Native', 'CNI']
+    tags: ['K8s', 'Cloud Native', 'CNI'],
+    image: 'https://images.unsplash.com/photo-1667372393119-c85c02088947?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-33',
+    number: '33',
+    title: 'BGP: The Internet\'s GPS',
+    excerpt: 'How Autonomous Systems exchange routing information to keep the global internet connected.',
+    content: '<p>Border Gateway Protocol (BGP) is the postal service of the internet. Without it, data packets would not know which path to take to reach their destination across the complex web of ISPs.</p>',
+    category: Category.NETWORKING,
+    author: 'Alex Chen',
+    date: '2024-01-05',
+    readTime: '10 min',
+    tags: ['BGP', 'Routing', 'ISP'],
+    image: 'https://images.unsplash.com/photo-1520869562399-e772f042f422?q=80&w=2073&auto=format&fit=crop'
+  },
+  {
+    id: 'p-iot-03',
+    number: '103',
+    title: 'Interfacing Sensors: I2C vs SPI',
+    excerpt: 'Connecting the physical world to code. When to use Inter-Integrated Circuit vs Serial Peripheral Interface.',
+    content: `
+      <p class="mb-4">Digital sensors speak specific protocols. The two most common for board-level communication are I2C and SPI. Knowing which to choose affects your wiring complexity and speed.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">I2C (Inter-Integrated Circuit)</h3>
+      <p class="mb-4">Uses only two wires (SDA and SCL). It supports multiple devices on the same bus using addresses. Great for simplicity, but slower.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">SPI (Serial Peripheral Interface)</h3>
+      <p class="mb-4">Uses four wires (MISO, MOSI, SCK, CS). It's full-duplex and much faster than I2C, making it ideal for displays or SD card readers, but requires more pins for multiple devices.</p>
+    `,
+    category: Category.IOT,
+    author: 'Mohammed Sami',
+    date: '2024-04-18',
+    readTime: '11 min',
+    tags: ['Sensors', 'Embedded', 'Hardware'],
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-41',
+    number: '41',
+    title: 'Cloud Networking: AWS VPC vs Azure VNet',
+    excerpt: 'A comparative analysis of peering, gateways, and private link implementations in the two major clouds.',
+    content: '<p>While concepts like subnets and route tables are universal, the implementation details between AWS Virtual Private Clouds (VPCs) and Azure Virtual Networks (VNets) differ significantly in practice.</p>',
+    category: Category.CLOUD,
+    author: 'David Ross',
+    date: '2024-01-22',
+    readTime: '14 min',
+    tags: ['AWS', 'Azure', 'VPC'],
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
+  },
+  {
+    id: 'p-55',
+    number: '55',
+    title: 'Anatomy of a Spear-Phishing Campaign',
+    excerpt: 'Dissecting email headers and malicious payloads from a real-world social engineering attack.',
+    content: '<p>Social engineering remains the #1 vector for initial compromise. In this packet, we analyze a de-weaponized sample of a targeted phishing email.</p>',
+    category: Category.CYBERSECURITY,
+    author: 'Sarah Jenkins',
+    date: '2024-02-08',
+    readTime: '9 min',
+    tags: ['Phishing', 'Forensics', 'Email'],
+    image: 'https://images.unsplash.com/photo-1563206767-5b1d97209375?q=80&w=2072&auto=format&fit=crop'
+  },
+  {
+    id: 'p-iot-04',
+    number: '104',
+    title: 'Home Automation: Beyond Smart Bulbs',
+    excerpt: 'Building a private, cloud-free smart home using Home Assistant, Zigbee, and Docker.',
+    content: `
+      <p class="mb-4">Most "Smart Home" devices rely on external cloud servers. If your internet goes down, so does your light switch. Real automation happens locally.</p>
+      <p class="mb-4">By using a Raspberry Pi running <strong>Home Assistant</strong> and a Zigbee USB coordinator, you can control Philips Hue, IKEA Tradfri, and Xiaomi sensors without a single packet leaving your LAN.</p>
+    `,
+    category: Category.IOT,
+    author: 'Sarah Jenkins',
+    date: '2024-04-25',
+    readTime: '14 min',
+    tags: ['Home Assistant', 'Zigbee', 'Privacy'],
+    image: 'https://images.unsplash.com/photo-1558002038-1091a166111c?q=80&w=2071&auto=format&fit=crop'
+  },
+  {
+    id: 'p-62',
+    number: '62',
+    title: 'Mastering IPv6 Addressing Modes',
+    excerpt: 'Understanding SLAAC, DHCPv6, and Link-Local addresses to prepare for the inevitable switch.',
+    content: '<p>IPv4 exhaustion is old news. The real challenge is mastering the new paradigms of IPv6, specifically how hosts auto-configure their interfaces without a central DHCP server.</p>',
+    category: Category.NETWORKING,
+    author: 'Alex Chen',
+    date: '2024-02-15',
+    readTime: '11 min',
+    tags: ['IPv6', 'SLAAC', 'Addressing'],
+    image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1974&auto=format&fit=crop'
+  },
+  {
+    id: 'p-78',
+    number: '78',
+    title: 'Container Security Best Practices',
+    excerpt: 'Hardening Docker images and runtime environments against privilege escalation attacks.',
+    content: '<p>Running containers as root is a recipe for disaster. We explore capability dropping, read-only filesystems, and scanning images for CVEs before deployment.</p>',
+    category: Category.CLOUD,
+    author: 'David Ross',
+    date: '2024-03-01',
+    readTime: '13 min',
+    tags: ['Docker', 'Security', 'DevSecOps'],
+    image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=2071&auto=format&fit=crop'
+  },
+  {
+    id: 'p-84',
+    number: '84',
+    title: 'WiFi 7 (802.11be): What Engineers Need to Know',
+    excerpt: 'Multi-Link Operation (MLO), 320MHz channels, and the future of wireless enterprise networks.',
+    content: '<p>WiFi 7 is not just a speed upgrade; it drastically reduces latency and increases reliability through Multi-Link Operation, allowing devices to send data across multiple bands simultaneously.</p>',
+    category: Category.NETWORKING,
+    author: 'Alex Chen',
+    date: '2024-03-12',
+    readTime: '7 min',
+    tags: ['WiFi', 'Wireless', 'Hardware'],
+    image: 'https://images.unsplash.com/photo-1563770095-39d468f98753?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-iot-05',
+    number: '105',
+    title: 'Industrial IoT: PLC Basics',
+    excerpt: 'Bridging the gap between IT and OT. How Programmable Logic Controllers operate in SCADA environments.',
+    content: `
+      <p class="mb-4">In the Operational Technology (OT) world, reliability is king. PLCs (Programmable Logic Controllers) are the ruggedized computers that control assembly lines and power plants.</p>
+      <p class="mb-4">Unlike standard servers, PLCs operate in real-time loops, scanning inputs and setting outputs based on Ladder Logic. Modern IIoT gateways are now extracting this data for predictive maintenance in the cloud.</p>
+    `,
+    category: Category.IOT,
+    author: 'David Ross',
+    date: '2024-05-02',
+    readTime: '12 min',
+    tags: ['PLC', 'SCADA', 'IIoT', 'Industrial'],
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-91',
+    number: '91',
+    title: 'Infrastructure as Code: Terraform State Management',
+    excerpt: 'Managing state files, locking strategies, and module structures for scalable cloud deployments.',
+    content: '<p>The state file is the holy grail of Terraform. Losing it means losing track of your infrastructure. We discuss remote state storage in S3 with DynamoDB locking.</p>',
+    category: Category.CLOUD,
+    author: 'David Ross',
+    date: '2024-03-20',
+    readTime: '16 min',
+    tags: ['Terraform', 'IaC', 'DevOps'],
+    image: 'https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-99',
+    number: '99',
+    title: 'Reducing Noise in SIEM Logs',
+    excerpt: 'Strategies for tuning correlation rules to detect actual threats over false positives.',
+    content: '<p>Alert fatigue is real. A SIEM that alerts on everything alerts on nothing. Learn how to tune your ingestion filters and correlation rules to focus on high-fidelity signals.</p>',
+    category: Category.CYBERSECURITY,
+    author: 'Sarah Jenkins',
+    date: '2024-03-28',
+    readTime: '12 min',
+    tags: ['SIEM', 'SOC', 'Logging'],
+    image: 'https://images.unsplash.com/photo-1551808525-51a94da548ce?q=80&w=2007&auto=format&fit=crop'
   }
 ];
 
@@ -161,7 +370,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Reddit',
     url: 'https://www.reddit.com/user/Time_Control_9/',
-    iconPath: 'M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z',
+    iconPath: 'M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.249-1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z',
     viewBox: '0 0 24 24'
   },
   {
