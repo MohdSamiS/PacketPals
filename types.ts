@@ -17,7 +17,7 @@ export interface Packet {
   tags: string[];
 }
 
-export interface Transition {
+export interface Transmission {
   id: string;
   number: string; // e.g., "021"
   title: string;

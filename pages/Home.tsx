@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Cloud, Server, Terminal, Clock } from 'lucide-react';
-import { PACKETS, TRANSITIONS, SOCIAL_LINKS } from '../services/mockData';
+import { PACKETS, TRANSMISSIONS, SOCIAL_LINKS } from '../services/mockData';
 
 const Home: React.FC = () => {
   const latestPackets = PACKETS.slice(0, 2);
-  const latestTransition = TRANSITIONS[0];
+  const latestTransmission = TRANSMISSIONS[0];
 
   return (
     <div className="flex flex-col w-full">
@@ -117,29 +117,29 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Transitions Feed Highlight (1/3 width) */}
+          {/* Transmissions Feed Highlight (1/3 width) */}
           <div className="lg:col-span-1">
              <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
                 <Server className="text-brand-net" />
-                <span>Transitions</span>
+                <span>Transmissions</span>
               </h2>
-              <Link to="/transitions" className="text-sm text-brand-net hover:underline">Feed</Link>
+              <Link to="/transmissions" className="text-sm text-brand-net hover:underline">Feed</Link>
             </div>
 
             <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
               <div className="relative border-l border-slate-700 pl-6 py-2">
                 <div className="mb-1">
                   <span className="absolute -left-1.5 top-3 w-3 h-3 bg-brand-net rounded-full border-2 border-brand-dark"></span>
-                  <span className="text-xs font-mono text-brand-net block mb-1">Transition #{latestTransition.number}</span>
-                  <h4 className="text-white font-medium hover:text-brand-net transition-colors cursor-pointer">{latestTransition.title}</h4>
-                  <p className="text-sm text-brand-muted mt-2">{latestTransition.description}</p>
+                  <span className="text-xs font-mono text-brand-net block mb-1">Transmission #{latestTransmission.number}</span>
+                  <h4 className="text-white font-medium hover:text-brand-net transition-colors cursor-pointer">{latestTransmission.title}</h4>
+                  <p className="text-sm text-brand-muted mt-2">{latestTransmission.description}</p>
                   <div className="mt-4 pt-4 border-t border-slate-800">
-                     <p className="text-xs text-slate-500">Live Update • {latestTransition.date}</p>
+                     <p className="text-xs text-slate-500">Live Update • {latestTransmission.date}</p>
                   </div>
                 </div>
               </div>
-              <Link to="/transitions" className="block mt-6 text-center w-full py-2 bg-slate-800 text-sm text-white rounded hover:bg-slate-700 transition-colors">
+              <Link to="/transmissions" className="block mt-6 text-center w-full py-2 bg-slate-800 text-sm text-white rounded hover:bg-slate-700 transition-colors">
                 View System Timeline
               </Link>
             </div>

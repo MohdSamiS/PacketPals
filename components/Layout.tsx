@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Home', path: '/', icon: <Network size={18} /> },
     { name: 'Packets', path: '/packets', icon: <Terminal size={18} /> },
     { name: 'Tools', path: '/tools', icon: <Wrench size={18} /> },
-    { name: 'Transitions', path: '/transitions', icon: <Activity size={18} /> },
+    { name: 'Transmissions', path: '/transmissions', icon: <Activity size={18} /> },
     { name: 'About', path: '/about', icon: <Info size={18} /> },
     { name: 'Contact', path: '/contact', icon: <Mail size={18} /> },
   ];
@@ -143,7 +143,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <ul className="space-y-2 text-sm text-brand-muted">
                 <li><Link to="/packets" className="hover:text-brand-accent transition-colors">Packets (Blog)</Link></li>
                 <li><Link to="/tools" className="hover:text-brand-accent transition-colors">Tools Dashboard</Link></li>
-                <li><Link to="/transitions" className="hover:text-brand-accent transition-colors">Transitions (Feed)</Link></li>
+                <li><Link to="/transmissions" className="hover:text-brand-accent transition-colors">Transmissions (Feed)</Link></li>
               </ul>
             </div>
             <div>
