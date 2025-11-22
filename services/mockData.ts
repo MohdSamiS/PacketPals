@@ -1,3 +1,4 @@
+
 import { Packet, Transmission, Tool, Category, SocialLink } from '../types';
 
 export const PACKETS: Packet[] = [
@@ -34,6 +35,33 @@ export const PACKETS: Packet[] = [
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bbcbf?q=80&w=2071&auto=format&fit=crop'
   },
   {
+    id: 'p-hl-01',
+    number: '120',
+    title: 'Virtualization at Home: Getting Started with Proxmox VE',
+    excerpt: 'Ditch the Type-2 hypervisors. Learn how to turn an old PC into an enterprise-grade virtualization server using Proxmox and LXC containers.',
+    content: `
+      <p class="mb-4">If you are still running VMs in VirtualBox on your laptop, it is time to upgrade. Proxmox VE is an open-source, enterprise-grade virtualization platform based on Debian that allows you to run VMs and LXC containers with near-native performance.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Why Proxmox?</h3>
+      <p class="mb-4">Proxmox allows you to cluster multiple physical machines, manage software-defined storage (Ceph/ZFS), and handle backups via a web interface. It is the gold standard for modern homelabs.</p>
+
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">LXC vs VMs</h3>
+      <p class="mb-4">One of Proxmox's superpowers is Linux Containers (LXC). Unlike a full VM which emulates hardware, an LXC container shares the host kernel.</p>
+      <ul class="list-disc pl-5 space-y-2 mb-6 text-slate-600 dark:text-brand-muted">
+        <li><strong>VM:</strong> High isolation, high resource usage. Good for Windows, Docker hosts, or completely different OS kernels.</li>
+        <li><strong>LXC:</strong> Low isolation, extremely low resource usage. Perfect for Pi-hole, Nginx, database servers, or static sites.</li>
+      </ul>
+      
+      <p class="mb-4">In future packets, we will discuss setting up a Proxmox Backup Server to ensure your lab is resilient to drive failures.</p>
+    `,
+    category: Category.CLOUD,
+    author: 'Mohammed Sami',
+    date: '2024-05-10',
+    readTime: '15 min',
+    tags: ['Homelab', 'Proxmox', 'Virtualization', 'Linux'],
+    image: 'https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
     id: 'p-14',
     number: '14',
     title: 'Zero Trust Security Explained',
@@ -54,6 +82,31 @@ export const PACKETS: Packet[] = [
     readTime: '12 min',
     tags: ['Security', 'Zero Trust', 'Enterprise'],
     image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-auto-01',
+    number: '135',
+    title: 'Visual Automation: Why n8n is the King of Self-Hosted Workflows',
+    excerpt: 'Stop paying for Zapier. Build complex, branching automation flows on your own hardware with n8n to connect your services.',
+    content: `
+      <p class="mb-4">Automation is the force multiplier of the modern engineer. While tools like Zapier or IFTTT are great entry points, they get expensive and introduce privacy concerns. Enter n8n: a fair-code workflow automation tool you can host yourself.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Node-Based Logic</h3>
+      <p class="mb-4">n8n allows you to chain "nodes" together visually. A webhook trigger can fetch data, a Javascript node can transform it, and a Slack node can message you the result.</p>
+      
+      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
+        <span class="text-brand-muted">// Example Logic: Monitoring a website status</span><br/>
+        Cron Trigger (Every 5m) -> HTTP Request (GET status) -> If (status != 200) -> Email Alert
+      </div>
+      
+      <p class="mb-4">Because it runs in Docker on your own server (or Raspberry Pi), you have no execution limits and full access to your local network devices.</p>
+    `,
+    category: Category.CLOUD,
+    author: 'Sarah Jenkins',
+    date: '2024-05-15',
+    readTime: '12 min',
+    tags: ['Automation', 'n8n', 'Self-Hosted', 'API'],
+    image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2000&auto=format&fit=crop'
   },
   {
     id: 'p-iot-01',
@@ -79,6 +132,29 @@ export const PACKETS: Packet[] = [
     readTime: '10 min',
     tags: ['ESP32', 'Arduino', 'Hardware', 'Microcontrollers'],
     image: 'https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-hl-02',
+    number: '142',
+    title: 'TrueNAS Scale vs Unraid: The Battle for Your Storage',
+    excerpt: 'ZFS data integrity or easy expansion? We compare the two titans of the Network Attached Storage world for your homelab.',
+    content: `
+      <p class="mb-4">Your data is your most valuable asset. Storing it on a single USB drive is a recipe for disaster. Dedicated NAS OSs provide redundancy (RAID) and services like SMB/NFS shares, but choosing the right one is critical.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">TrueNAS Scale</h3>
+      <p class="mb-4">Built on Linux (Debian), it uses OpenZFS. ZFS is enterprise-grade, offering snapshots, compression, and protection against bit-rot. It is rigid but rock-solid.</p>
+      <p class="text-sm text-slate-500 mb-4">Best for: Critical data, professional environments, high performance.</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Unraid</h3>
+      <p class="mb-4">As the name implies, it's not traditional RAID. It allows you to mix and match drive sizes and add new drives easily. It boots from a USB stick and loads into RAM.</p>
+      <p class="text-sm text-slate-500 mb-4">Best for: Media servers (Plex/Jellyfin), hobbyists, using old hardware.</p>
+    `,
+    category: Category.NETWORKING,
+    author: 'David Ross',
+    date: '2024-05-22',
+    readTime: '14 min',
+    tags: ['NAS', 'Storage', 'Homelab', 'ZFS'],
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2000&auto=format&fit=crop'
   },
   {
     id: 'p-iot-02',
@@ -116,6 +192,33 @@ export const PACKETS: Packet[] = [
     readTime: '15 min',
     tags: ['K8s', 'Cloud Native', 'CNI'],
     image: 'https://images.unsplash.com/photo-1667372393119-c85c02088947?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'p-auto-02',
+    number: '150',
+    title: 'Infrastructure as Code: Managing Homelabs with Ansible',
+    excerpt: 'Stop SSH-ing into servers to run apt-get update manually. Define your infrastructure state in YAML and deploy to all nodes instantly.',
+    content: `
+      <p class="mb-4">Managing one server is fun. Managing ten is a chore. Ansible is an open-source, agentless automation tool that uses SSH to execute tasks on remote machines. It is the bridge between "it works on my machine" and "it works everywhere".</p>
+      
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">The Playbook</h3>
+      <p class="mb-4">Ansible uses YAML files called Playbooks to describe the desired state of a system. You describe <em>what</em> you want, and Ansible figures out <em>how</em> to get there.</p>
+      
+      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
+        <span class="text-pink-400">- name:</span> Ensure nginx is installed<br/>
+        &nbsp;&nbsp;<span class="text-blue-400">apt:</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">name:</span> nginx<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">state:</span> present<br/>
+      </div>
+      
+      <p class="mb-4">This is perfect for homelabs. Need to update all your Pis? One command. Need to reinstall Docker on a fresh node? Run the playbook.</p>
+    `,
+    category: Category.CLOUD,
+    author: 'Alex Chen',
+    date: '2024-06-01',
+    readTime: '10 min',
+    tags: ['Ansible', 'DevOps', 'IaC', 'Linux'],
+    image: 'https://images.unsplash.com/photo-1667372393119-c85c02088947?q=80&w=2000&auto=format&fit=crop'
   },
   {
     id: 'p-33',
