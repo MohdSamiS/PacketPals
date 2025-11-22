@@ -17,12 +17,12 @@ export const PACKETS: Packet[] = [
         <li><strong class="text-brand-net">Internet Layer:</strong> Determines the best path through the network.</li>
         <li><strong class="text-brand-net">Network Access Layer:</strong> Controls the hardware devices and media that make up the network.</li>
       </ul>
-      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
-        <span class="text-brand-muted">// Simple Python socket example (Transport Layer)</span><br/>
-        <span class="text-pink-400">import</span> socket<br/><br/>
+      <div class="bg-tech-bg text-tech-text p-4 rounded-md border border-slate-700 font-mono text-sm my-6 overflow-x-auto tech-scroll shadow-inner">
+        <span class="text-tech-muted">// Simple Python socket example (Transport Layer)</span><br/>
+        <span class="text-purple-400">import</span> socket<br/><br/>
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br/>
-        s.connect((<span class="text-green-400">'www.packetpals.com'</span>, <span class="text-blue-400">80</span>))<br/>
-        s.sendall(<span class="text-green-400">b'GET / HTTP/1.1\\r\\nHost: packetpals.com\\r\\n\\r\\n'</span>)<br/>
+        s.connect((<span class="text-tech-accent">'www.packetpals.com'</span>, <span class="text-blue-400">80</span>))<br/>
+        s.sendall(<span class="text-tech-accent">b'GET / HTTP/1.1\\r\\nHost: packetpals.com\\r\\n\\r\\n'</span>)<br/>
         data = s.recv(<span class="text-blue-400">1024</span>)<br/>
         s.close()<br/>
       </div>
@@ -94,8 +94,8 @@ export const PACKETS: Packet[] = [
       <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Node-Based Logic</h3>
       <p class="mb-4">n8n allows you to chain "nodes" together visually. A webhook trigger can fetch data, a Javascript node can transform it, and a Slack node can message you the result.</p>
       
-      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
-        <span class="text-brand-muted">// Example Logic: Monitoring a website status</span><br/>
+      <div class="bg-tech-bg text-tech-text p-4 rounded-md border border-slate-700 font-mono text-sm my-6 overflow-x-auto tech-scroll shadow-inner">
+        <span class="text-tech-muted">// Example Logic: Monitoring a website status</span><br/>
         Cron Trigger (Every 5m) -> HTTP Request (GET status) -> If (status != 200) -> Email Alert
       </div>
       
@@ -167,10 +167,10 @@ export const PACKETS: Packet[] = [
       <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Publish / Subscribe Model</h3>
       <p class="mb-4">Unlike the client-server model of the web, MQTT uses a Broker. Devices "publish" messages to a "topic" (e.g., <code>home/livingroom/temp</code>), and other devices "subscribe" to that topic to receive updates.</p>
       
-      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
-        <span class="text-brand-muted">// Arduino / C++ MQTT Example</span><br/>
-        client.publish(<span class="text-green-400">"sensors/humidity"</span>, <span class="text-blue-400">"45.2"</span>);<br/><br/>
-        <span class="text-brand-muted">// Subscribing device receives this instantly</span>
+      <div class="bg-tech-bg text-tech-text p-4 rounded-md border border-slate-700 font-mono text-sm my-6 overflow-x-auto tech-scroll shadow-inner">
+        <span class="text-tech-muted">// Arduino / C++ MQTT Example</span><br/>
+        client.publish(<span class="text-tech-accent">"sensors/humidity"</span>, <span class="text-blue-400">"45.2"</span>);<br/><br/>
+        <span class="text-tech-muted">// Subscribing device receives this instantly</span>
       </div>
     `,
     category: Category.IOT,
@@ -204,11 +204,11 @@ export const PACKETS: Packet[] = [
       <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">The Playbook</h3>
       <p class="mb-4">Ansible uses YAML files called Playbooks to describe the desired state of a system. You describe <em>what</em> you want, and Ansible figures out <em>how</em> to get there.</p>
       
-      <div class="bg-slate-900 p-4 rounded-md border border-slate-700 font-mono text-sm my-6">
-        <span class="text-pink-400">- name:</span> Ensure nginx is installed<br/>
-        &nbsp;&nbsp;<span class="text-blue-400">apt:</span><br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">name:</span> nginx<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">state:</span> present<br/>
+      <div class="bg-tech-bg text-tech-text p-4 rounded-md border border-slate-700 font-mono text-sm my-6 overflow-x-auto tech-scroll shadow-inner">
+        <span class="text-purple-400">- name:</span> Ensure nginx is installed<br/>
+        &nbsp;&nbsp;<span class="text-tech-accent">apt:</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-tech-accent">name:</span> nginx<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-tech-accent">state:</span> present<br/>
       </div>
       
       <p class="mb-4">This is perfect for homelabs. Need to update all your Pis? One command. Need to reinstall Docker on a fresh node? Run the playbook.</p>
@@ -509,13 +509,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Pinterest',
     url: 'https://in.pinterest.com/samishahid537/',
-    iconPath: 'M12 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.65 0-5.789 2.738-5.789 5.57 0 1.103.425 2.286.956 2.928.105.128.12.24.09.435-.098.407-.316 1.287-.359 1.467-.056.238-.188.289-.433.174-1.616-.751-2.624-3.11-2.624-5.012 0-4.079 2.964-7.823 8.545-7.823 4.486 0 7.972 3.198 7.972 7.466 0 4.458-2.805 8.035-6.701 8.035-1.308 0-2.536-.679-2.958-1.482 0 0-.708 2.695-.879 3.355-.317 1.219-1.176 2.742-1.756 3.68 1.589.482 3.283.744 5.032.744 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z',
+    iconPath: 'M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.425-2.853-2.425-4.583 0-3.746 2.706-7.188 7.848-7.188 4.11 0 7.322 2.933 7.322 6.857 0 4.089-2.569 7.372-6.138 7.372-1.2 0-2.324-.625-2.707-1.36l-.739 2.803c-.266 1.018-.987 2.282-1.473 3.055.945.291 2.016.45 3.115.45 6.625 0 12.017-5.332 12.017-11.987C24.033 5.367 18.644 0 12.017 0z',
     viewBox: '0 0 24 24'
   },
   {
     name: 'Discord',
     url: 'https://discord.com/login?redirect_to=%2Fchannels%2F%40me',
-    iconPath: 'M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z',
+    iconPath: 'M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-2.395-9.13-4.883-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z',
     viewBox: '0 0 24 24'
   }
 ];

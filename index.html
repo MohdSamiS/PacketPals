@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Packet Pals | Decoding Layers</title>
     <meta name="description" content="Packet Pals – Decoding the Layers of Networking, Cloud, and Cybersecurity" />
+    
+    <!-- Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -20,11 +27,30 @@
                 net: '#10b981', // emerald-500 (Network)
                 text: '#e2e8f0', // slate-200
                 muted: '#94a3b8', // slate-400
+              },
+              tech: {
+                bg: '#141821',     // Requested Code Background
+                text: '#E0E0E0',   // Requested Code Text
+                accent: '#00D1FF', // Requested Neon Accent
+                muted: '#6B7280',  // Comment gray
               }
             },
             fontFamily: {
-              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
-            }
+              mono: ['"JetBrains Mono"', '"Fira Code"', '"Source Code Pro"', 'Menlo', 'Consolas', 'monospace'],
+              sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+            },
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  'code::before': { content: '""' },
+                  'code::after': { content: '""' },
+                  code: {
+                    fontFamily: theme('fontFamily.mono'),
+                    fontWeight: '400',
+                  },
+                },
+              },
+            }),
           }
         }
       }
@@ -33,6 +59,7 @@
       /* Custom scrollbar for a tech feel */
       ::-webkit-scrollbar {
         width: 8px;
+        height: 8px;
       }
       ::-webkit-scrollbar-track {
         @apply bg-slate-50 dark:bg-slate-950;
@@ -43,6 +70,16 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         @apply bg-slate-400 dark:bg-slate-600;
+      }
+      
+      /* Typography overrides */
+      code, pre, kbd, samp {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Menlo, Consolas, monospace;
+        letter-spacing: 0.02em;
+      }
+      
+      .tech-scroll {
+        scrollbar-color: #334155 #141821;
       }
     </style>
   <script type="importmap">
@@ -57,7 +94,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+  <body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300 font-sans antialiased">
     <div id="root"></div>
   </body>
 </html>
