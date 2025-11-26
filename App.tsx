@@ -8,6 +8,8 @@ import Transmissions from './pages/Transmissions';
 import Tools from './pages/Tools';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import IpSubnetCalculator from './pages/IpSubnetCalculator';
+
 
 const App: React.FC = () => {
   return (
@@ -21,6 +23,7 @@ const App: React.FC = () => {
           {/* Redirect old route just in case */}
           <Route path="/transitions" element={<Transmissions />} />
           <Route path="/tools" element={<Tools />} />
+          <Route path="/tools/ip-subnet-calculator" element={<IpSubnetCalculator />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

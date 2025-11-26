@@ -5,6 +5,7 @@ export enum Category {
   IOT = 'IoT & Electronics',
 }
 
+
 export interface Packet {
   id: string;
   number: string; // e.g., "01", "14"
