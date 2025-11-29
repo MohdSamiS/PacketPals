@@ -8,16 +8,17 @@ export enum Category {
 
 export interface Packet {
   id: string;
-  number: string; // e.g., "01", "14"
+  slug: string;
+  number: number;
   title: string;
+  category: string;
   excerpt: string;
-  content: string; // HTML or Markdown string
-  category: Category;
+  content: string;
   author: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-  image?: string; // URL to cover image
+  read_time_minutes: number;
+  published_at: string;
+  cover_image_url?: string | null;
+  status: string; // 'draft' | 'published' | 'archived'
 }
 
 export interface Transmission {

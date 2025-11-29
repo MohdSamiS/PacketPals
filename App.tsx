@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/packets" element={<Packets />} />
-          <Route path="/packets/:id" element={<PacketDetail />} />
+          <Route path="/packets/:slug" element={<PacketDetail />} />
           <Route path="/transmissions" element={<Transmissions />} />
           {/* Redirect old route just in case */}
           <Route path="/transitions" element={<Transmissions />} />

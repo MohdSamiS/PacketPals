@@ -10,6 +10,7 @@ interface PacketSummary {
   category: string;
   excerpt: string;
   read_time_minutes: number;
+  status: string;
 }
 
 const Home: React.FC = () => {
@@ -21,7 +22,8 @@ const Home: React.FC = () => {
       setLoading(true);
       const { data, error } = await supabase
         .from("packets")
-        .select("id, slug, title, category, excerpt, read_time_minutes")
+        .select("id, slug, title, category, excerpt, read_time_minutes, status")
+        .eq("status", "published")
         .order("published_at", { ascending: false })
         .limit(3);
 
@@ -102,28 +104,21 @@ const Home: React.FC = () => {
         ) : (
           <div className="grid gap-4 md:grid-cols-3">
             {latestPackets.map((p) => (
-              <article
-                key={p.id}
-                className="border border-slate-800 bg-slate-900 rounded-xl p-4 hover:border-cyan-400/60 transition-colors"
-              >
+              <article key={p.id} className="border border-slate-800 bg-slate-900 rounded-xl p-4 hover:border-cyan-400/60 transition-colors">
                 <div className="flex items-center justify-between mb-2 text-xs text-slate-400">
                   <span className="flex items-center gap-1">
                     <Terminal size={14} className="text-cyan-300" />
                     {p.category}
                   </span>
                 </div>
-                <Link to={`/packets/${p.id}`} className="block mb-2">
+                <Link to={`/packets/${p.slug}`} className="block mb-2">
                   <h3 className="text-sm font-semibold text-slate-100 line-clamp-2 hover:text-cyan-300">
                     {p.title}
                   </h3>
                 </Link>
-                <p className="text-xs text-slate-400 line-clamp-3 mb-3">
-                  {p.excerpt}
-                </p>
+                <p className="text-xs text-slate-400 line-clamp-3 mb-3">{p.excerpt}</p>
                 <div className="flex items-center justify-between text-[11px] text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <Clock size={12} /> {p.read_time_minutes} min
-                  </span>
+                  <span className="flex items-center gap-1"><Clock size={12} /> {p.read_time_minutes} min</span>
                 </div>
               </article>
             ))}

@@ -2,37 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Clock, Terminal } from "lucide-react";
 import { supabase } from "../services/db";
-
-interface Packet {
-  id: string;
-  slug: string;
-  number: number;
-  title: string;
-  category: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  read_time_minutes: number;
-  published_at: string;
-}
+import { Packet } from "../types";
 
 const PacketDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [packet, setPacket] = useState<Packet | null>(null);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     const loadPacket = async () => {
-      if (!id) return;
-
+      if (!slug) return;
       setLoading(true);
       setErrorMsg(null);
 
       const { data, error } = await supabase
         .from("packets")
         .select("*")
-        .eq("id", id)
+        .eq("slug", slug)
         .single();
 
       if (error) {
@@ -47,42 +34,41 @@ const PacketDetail: React.FC = () => {
     };
 
     loadPacket();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
-    return (
-      <div className="max-w-3xl mx-auto px-4 py-12 text-slate-400">
-        Loading packet…
-      </div>
-    );
+    return <div className="max-w-3xl mx-auto px-4 py-12 text-slate-400">Loading packet…</div>;
   }
 
   if (errorMsg || !packet) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-12">
-        <Link
-          to="/packets"
-          className="text-sm text-cyan-300 hover:text-cyan-200 flex items-center gap-2 mb-4"
-        >
+        <Link to="/packets" className="text-sm text-cyan-300 hover:text-cyan-200 flex items-center gap-2 mb-4">
           <ArrowLeft size={16} />
           Back to Packets
         </Link>
-        <h1 className="text-2xl font-semibold text-slate-100 mb-2">
-          Packet not found
-        </h1>
-        {errorMsg && (
-          <p className="text-sm text-rose-400">Database error: {errorMsg}</p>
-        )}
+        <h1 className="text-2xl font-semibold text-slate-100 mb-2">Packet not found</h1>
+        {errorMsg && <p className="text-sm text-rose-400">Database error: {errorMsg}</p>}
+      </div>
+    );
+  }
+
+  if (packet.status !== "published") {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-12">
+        <Link to="/packets" className="text-sm text-cyan-300 hover:text-cyan-200 flex items-center gap-2 mb-4">
+          <ArrowLeft size={16} />
+          Back to Packets
+        </Link>
+        <h1 className="text-2xl font-semibold text-slate-100 mb-2">Packet not available</h1>
+        <p className="text-sm text-slate-400">This packet is not published.</p>
       </div>
     );
   }
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <Link
-        to="/packets"
-        className="text-sm text-cyan-300 hover:text-cyan-200 flex items-center gap-2 mb-4"
-      >
+      <Link to="/packets" className="text-sm text-cyan-300 hover:text-cyan-200 flex items-center gap-2 mb-4">
         <ArrowLeft size={16} />
         Back to Packets
       </Link>
@@ -93,23 +79,14 @@ const PacketDetail: React.FC = () => {
         <span className="text-slate-600">·</span>
         <span>{packet.category}</span>
         <span className="text-slate-600">·</span>
-        <span className="flex items-center gap-1">
-          <Clock size={14} /> {packet.read_time_minutes} min
-        </span>
+        <span className="flex items-center gap-1"><Clock size={14} /> {packet.read_time_minutes} min</span>
       </div>
 
-      <h1 className="text-3xl font-bold text-slate-100 mb-3">
-        {packet.title}
-      </h1>
-
+      <h1 className="text-3xl font-bold text-slate-100 mb-3">{packet.title}</h1>
       <p className="text-sm text-slate-400 mb-6">by {packet.author}</p>
 
       <article className="prose prose-invert prose-sm max-w-none">
-        {packet.content
-          .split("\n\n")
-          .map((para, idx) => (
-            <p key={idx}>{para}</p>
-          ))}
+        {packet.content.split("\n\n").map((para, idx) => <p key={idx}>{para}</p>)}
       </article>
     </div>
   );
